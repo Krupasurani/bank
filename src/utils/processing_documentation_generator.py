@@ -283,15 +283,13 @@ class ProcessingDocumentationGenerator:
     def _explain_confidence_level(self, field: Dict) -> str:
         """Explain why a field has specific confidence level"""
         confidence = field.get("confidence", "medium")
-        extracted_value = field.get("extracted_value", "")
         
         if confidence.lower() == "high":
             return "High confidence because field was explicitly mentioned with specific value or clear banking context"
-        elif confidence.lower() == "medium":
+        elif confidence.lower() == "medium":  
             return "Medium confidence because field was inferred from business context or mentioned without specific value"
         else:
             return "Low confidence because field detection was uncertain or based on weak indicators"
-
 
     def _explain_validation_logic(self, item: Dict) -> str:
         """Explain why an item needs maker-checker validation"""
